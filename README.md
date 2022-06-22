@@ -1,4 +1,4 @@
-# Formation Dev Web - Projet 5 - Piiquante
+# Formation Dev Web - Projet 6 - Piiquante
 
 ## Piiquante : Marque de sauces piquantes
 <p align="center">
