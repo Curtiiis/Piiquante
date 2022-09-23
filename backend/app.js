@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-require('dotenv').config({path: './config/.env'})
+require('dotenv').config({ path: './config/.env' })
 const path = require('path')
 const morgan = require('morgan')
 const helmet = require('helmet')
@@ -10,7 +10,7 @@ const userRoutes = require('./routes/user.routes');
 const saucesRoutes = require('./routes/sauce.routes')
 const limiter = require('./middleware/limiter')
 
-const logger = fs.createWriteStream(__dirname + '/access.log', {flags:'a'})
+const logger = fs.createWriteStream(__dirname + '/access.log', { flags: 'a' })
 
 //Connexion à MongoDB via Mongoose
 require('./config/db')
@@ -23,11 +23,11 @@ app.use(helmet.permittedCrossDomainPolicies())
 
 //Morgan logger
 morgan.token('id', (req) => req.params.id)
-morgan.token('body', (req) => JSON.stringify(req.body)) 
+morgan.token('body', (req) => JSON.stringify(req.body))
 app.use(morgan(
-    '1-[:date[web]]   2-:remote-addr   3-:id   4-:method   5-:status   6-:url   7-:body',
-    {stream: logger}
-    ))
+  '1-[:date[web]]   2-:remote-addr   3-:id   4-:method   5-:status   6-:url   7-:body',
+  { stream: logger }
+))
 
 //Requests rate limiter
 app.use(limiter)
